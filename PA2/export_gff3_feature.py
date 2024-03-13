@@ -12,7 +12,7 @@ path = ""
 proceed = True
 
 
-# finding_seq is a function I wrote to break down the gff result (gff3_line) to find the correct sequence and print it
+# finding_seq breaks down the gff result (gff3_line) to find the correct sequence and print it
 def finding_seq(gff3_line, res_string):
     # chromosome looks for the correct chromosome number (ie chrI, chrV, etc)
     chromosome = re.match(r"^chr\w*", gff3_line).group()
