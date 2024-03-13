@@ -1,4 +1,3 @@
-#Devin Zhao, PA1
 import math
 import random
 import datetime
@@ -9,20 +8,20 @@ class Point:
     def __init__(self, x_coord, y_coord):
         self.x = x_coord
         self.y = y_coord
-    #I implemented the __str__ function to customize its representation to a Cartesian form
+    #__str__ function represents the Point in Cartesian form
     def __str__(self):
         return f"({self.x},{self.y})"
 
 class Euclid_Pair:
-    #The Euclid_Pair class is used to store the data of a connection between two points and the length of the connection
+    #The Euclid_Pair class stores the connection between two points and the length of the connection
     def __init__(self, point1, point2, distance):
         self.point_a = point1
         self.point_b = point2
         self.dist = distance
-    #__str__ was implemented to customize its formatting to look nice when outputted
+    #__str__ reformats the Euclid_Pair class variables into a comprehensive format
     def __str__(self):
         return f"{self.point_a} {self.point_b} distance: {self.dist}"
-    #getdist() was implemented for easier access to the dist class variable
+    #getdist() directly returns the dist variable
     def getdist(self):
         return self.dist
 
@@ -59,8 +58,7 @@ def euclid_pair_merge(ep_array, start, middle, end):
     left_iterator = 0
     right_iterator = 0
     merge_index = start
-    #I used a while loop to cycle through the subarrays, compare each other, and merge them back into the main array
-    #also, manually setting the iterators makes implementing merging the leftover values easier
+    #A while loop cycles through the subarrays, compare each other, and merge them back into the main array
     while (left_iterator < left_end) and (right_iterator < right_end):
         left_dist = left_merge_array[left_iterator].getdist()
         right_dist = right_merge_array[right_iterator].getdist()
@@ -71,19 +69,19 @@ def euclid_pair_merge(ep_array, start, middle, end):
            ep_array[merge_index] = right_merge_array[right_iterator]
            right_iterator += 1
         merge_index += 1
-    #this while loop merges any remaining values in the left-hand array back into the main array
+    #This hile loop merges any remaining values in the left-hand array back into the main array
     while left_iterator < left_end:
         ep_array[merge_index] = left_merge_array[left_iterator]
         merge_index += 1
         left_iterator += 1
-    #this while loop merges any remaining values in the right-hand array back into the main array
+    #This while loop merges any remaining values in the right-hand array back into the main array
     while right_iterator < right_end:
         ep_array[merge_index] = right_merge_array[right_iterator]
         merge_index += 1
         right_iterator += 1
 
 def euclid_merge_sort(ep_array, start, end):
-    #euclid_merge_sort is implemented as seen in the textbook
+    #euclid_merge_sort implements the merge sort used to sort the Euclid_Pairs
     if start < end:
         middle = (start + end-1)//2
         euclid_merge_sort(ep_array, start, middle)
@@ -175,6 +173,5 @@ print(f"Results can be found at {output_file.name}.")
 output_file.write(f"\nTime taken: {time_end-time_start} seconds")
 output_file.close()
 #done
-
 
 
